@@ -1,0 +1,1200 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title></title>
+        <script src="js/java.js">
+        </script>
+        <link type="text/css" rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+      <div id="header">
+        <p>
+          <h1 style="padding: 5px;" >SIMULATOR-(0/1 KNAPSACK)</h1>
+        </p>
+      </div>
+
+
+
+
+      <div id="div1"> <!-- 1st div for main page. -->
+        <div id="p1">
+          <a class="myButton">HOME</a>
+          <a onclick="b1();" class="myButton">Thief Robbing a safe problem</a>
+        </div>
+      </div><!--End 1st div-->
+
+
+
+
+
+      <div id="div2" style="display: none;"><!-- 2nd div thief robbing a safe. -->
+        <div class="p2">
+            <a  onclick="b2();" class="myButton">HOME</a>
+            <a class="myButton">Thief Robbing a safe problem</a>
+            <a  onclick="b3();" class="myButton">Next</a>
+            <h3 style="border: 1px solid orange;background-color: orange;">0/1 Kanpsack Problem</h3>
+            <p style="text-align:left;"> A thief robbing a safe finds it filled with N types of items of varying size and value, but has only a small knapsack of capacity
+              M to use to carry the goods. More precisely, the knapsack problem is to find the combination of items which the thief should choose for his knapsack in order
+              to maximize the total value of all the items he takes. It is called 0/1 since the items only can be taken as whole not a fraction. For example, suppose that
+              he has a knapsack of capacity 17 and the safe contains many items of each of the sizes and values shown in the figure below. (Here, we use single-letter names
+              for the items in the example and integers in the program.) Then the thief can take five A’s (but not six) for total of 20, or he can fill up his knapsack with
+              a D and an E for a total of 24, or he can try many other combinations. But which will maximize his total take?
+            </p>
+            <img src="images/sc0.png" style="height:250px;width:300px;">
+        </div>
+      </div><!-- End of 2nd div. -->
+
+
+
+
+
+
+      <div id="div3" style="margin-bottom: 10px;display: none;"><!--3rd div for 1greedy scenario-->
+        <div id="p3">
+            <div class="rbox">
+                <h4>Bag Capacity : 10 unit</h4>
+                <h4>KNAPSACK</h4>
+                <div id="bagbox" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-image:url(images/bag.jpeg)">
+                  <table id="transbox" style="float: right;">
+                        <tr>
+                          <td><input type="text" id="bg1" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                        </tr>
+                        <tr>
+                          <td><input type="text" id="bg2" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                        </tr>
+                        <tr>
+                          <td><input type="text" id="bg3" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                        </tr>
+                        <tr>
+                          <td><input type="text" id="bg4" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                        </tr>
+                        <tr>
+                          <td><input type="text" id="bg5" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                        </tr>
+                  </table>
+                </div>
+                <p>Result Table</p>
+                <table id="ptable">
+                  <tr>
+                    <th colspan="4">Profit</th>
+                  </tr>
+                  <tr>
+                    <td>Process</td>
+                    <td>Scenario I</td>
+                    <td>Scenario II</td>
+                    <td>Scenario III</td>
+                  </tr>
+                  <tr>
+                    <td>Greedy</td>
+                    <td name="form1" action="dynamicsc1.html" method="get"><input type="text" style="width:70px;" id="st1"/></td>
+                    <td><input type="text" style="width:70px;" id="st2"/></td>
+                    <td><input type="text" style="width:70px;" id="st3"/></td>
+                  </tr>
+                  <tr>
+                    <td>Dynamic</td>
+                    <td><input type="text" style="width:70px;" id="dt1"/></td>
+                    <td><input type="text" style="width:70px;" id="dt2"/></td>
+                    <td><input type="text" style="width:70px;" id="dt3"/></td>
+                  </tr>
+                </table>
+            </div>
+            <div class="main">
+                <a onclick="b4();" class="myButton">HOME</a>
+                <a class="myButton">Scenario I</a>
+                <div class="tooltip"><a class="myButton" >Procedure</a>
+                    <span class="tooltiptext" style="font-size: small;">
+
+                        Procedure to be followed:<br>
+                        1.	Click on the “Thief robbing a safe problem” to read and understand actual problem. <br> 
+                        2.	Click on next button to proceed to Scenario I.<br>
+                        3.	Click the “Procedure to be followed” Button.<br>
+                        4.	Click on scenario-I button.<br>
+                        5.	Input the Non negative input values.<br>
+                        6.	Click on Greedy Method to evaluate method on given set of inputs.<br>
+                        7.	Select the items based on the Profit/ weight ratio (Higher ratio item select first and so on).<br>
+                        8.	Fill the calculated maximum profit into the given output box and click on Check Result Button.<br>
+                        9.	Click the Next Button to proceed the Dynamic Programming Method.<br>
+                        10.	Fill the Evaluation table using given formula.<br>
+                        11.	Calculate the maximum profit using input values, Evaluation table and the Hint.<br>
+                        12.	Fill the calculated maximum profit into the given output box and click on Check Result Button.<br>
+                        13.	Click on Scenario-II button and follow the above steps from 4 to 12.<br>
+                        14.	Click the Graph button to generate the graph.<br>                
+                    </span>
+                  </div>
+                <h3>Scenario I: The input values of weight  should be very less than value of profit.</h3>
+      
+      
+                <table style="width:auto;">
+                        <tr>
+                          <th>ITEM ID</th>
+                          <th>ITEM</th>
+                          <th>WEIGHT</th>
+                          <th >PROFIT</th>
+                          <th >(Profit/Weight) Ratio</th>
+                        </tr>
+                        <tr>
+                          <td>1</td>
+                          <td><img id="drag1" class="wt11" draggable="true" ondragstart="drag(event)" src="images/laptop.jpg" height="30px" width:"60px"></img></td>
+                          <td>
+                            <select id="wt1" class="wt11">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                          </td>
+                          <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                          <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159); margin:5px;" id="rt1"></td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td><img id="drag2" class="wt12" draggable="true" ondragstart="drag(event)" src="images/jewelary.jpg" height="30px" width:"60px"></img></td>
+                          <td><select id="wt2" class="wt12">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select></td>
+                          <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt2"></td>
+                          <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159);margin:5px;" id="rt2"></td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td><img id="drag3" class="wt13" draggable="true" ondragstart="drag(event)" src="images/mobile.jpg" height="30px" width:"60px"></img></td>
+                          <td><select id="wt3" class="wt13">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select></td>
+                          <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt3"></td>
+                          <td><input type="text" name="d1" style="width:60px;border:0px;background-color:rgb(89, 245, 159);margin:5px;" id="rt3"></td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td><img  id="drag4" class="wt14" draggable="true" ondragstart="drag(event)" src="images/diamond.jpg" height="30px" width:"80px"></img></td>
+                          <td><select id="wt4" class="wt14">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select></td>
+                          <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt4"></td>
+                          <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159);margin:5px;" id="rt4"></td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td><img  id="drag5" class="wt15" draggable="true" ondragstart="drag(event)" src="images/suitcase.jpg" height="30px" width:"60px"></img></td>
+                          <td><select id="wt5" class="wt15">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select></td>
+                          <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt5"></td>
+                          <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159);margin:5px;" id="rt5"></td>
+                        </tr>
+                      </table><br>
+      
+                      <p style="color:red;float:left;">HINT : Select the items based on (profit/weight) ratio according to the capacity of knapsack
+                        (higher ratio item select first then next higher and so on.) </p><br>
+                      <a onclick="algo1();" class="myButton" id="algo">Greedy Algorithm</a><br><br>
+                     <p id="para1" style="display: none;">Enter the maximum profit :<input type="number" id="rs1">
+                      <a  class="myButton" id="check" onclick="result1();">Check Result</a><a style="float:right;" class="myButton" id="next1" onclick="b5();">Next</a></p>     
+             </div>     
+        </div>
+      </div><!--End of 3rd div for 1greedy scenario-->
+
+
+
+
+
+      <div id="div4" style="display: none;"> <!--4th div for 1Dynamic scenario-->
+          <div class="rbox">
+              <h4>Bag Capacity : 10 unit</h4>
+              <h4>KNAPSACK</h4>
+              <div id="bagbox" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-image:url(images/bag.jpeg)">
+                <table id="transbox" style="float: right;">
+                      <tr>
+                        <td><input type="text" id="bg1" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="bg2" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="bg3" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="bg4" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="bg5" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                      </tr>
+                </table>
+              </div>
+              <p>Result Table</p>
+              <table id="ptable">
+                <tr>
+                  <th colspan="4">Profit</th>
+                </tr>
+                <tr>
+                  <td>Process</td>
+                  <td>Scenario I</td>
+                  <td>Scenario II</td>
+                  <td>Scenario III</td>
+                </tr>
+                <tr>
+                  <td>Greedy</td>
+                  <td name="form1" action="dynamicsc1.html" method="get"><input type="text" style="width:70px;" id="st1"/></td>
+                  <td><input type="text" style="width:70px;" id="st2"/></td>
+                  <td><input type="text" style="width:70px;" id="st3"/></td>
+                </tr>
+                <tr>
+                  <td>Dynamic</td>
+                  <td><input type="text" style="width:70px;" id="dt1"/></td>
+                  <td><input type="text" style="width:70px;" id="dt2"/></td>
+                  <td><input type="text" style="width:70px;" id="dt3"/></td>
+                </tr>
+              </table>
+          </div>
+          <div class="main1">
+              <a onclick="b6();" class="myButton">Home</a>
+              <div class="tooltip"><a class="myButton" >Procedure</a>
+                <span class="tooltiptext" style="font-size: small;">
+
+                    Procedure to be followed:<br>
+                    1.	Click on the “Thief robbing a safe problem” to read and understand actual problem. <br> 
+                    2.	Click on next button to proceed to Scenario I.<br>
+                    3.	Click the “Procedure to be followed” Button.<br>
+                    4.	Click on scenario-I button.<br>
+                    5.	Input the Non negative input values.<br>
+                    6.	Click on Greedy Method to evaluate method on given set of inputs.<br>
+                    7.	Select the items based on the Profit/ weight ratio (Higher ratio item select first and so on).<br>
+                    8.	Fill the calculated maximum profit into the given output box and click on Check Result Button.<br>
+                    9.	Click the Next Button to proceed the Dynamic Programming Method.<br>
+                    10.	Fill the Evaluation table using given formula.<br>
+                    11.	Calculate the maximum profit using input values, Evaluation table and the Hint.<br>
+                    12.	Fill the calculated maximum profit into the given output box and click on Check Result Button.<br>
+                    13.	Click on Scenario-II button and follow the above steps from 4 to 12.<br>
+                    14.	Click the Graph button to generate the graph.<br>                             
+                </span>
+              </div>
+              <h3>Scenario I: The input values of weight  should be very less than value of profit.</h3>
+      
+              <table style="width:auto" class="bag321" style="text-align:center;">
+                <tr>
+                  <th>ITEM NO.</th>
+                  <th>ITEM IMG</th>
+                  <th>WEIGHT</th>
+                  <th >PROFIT</th>
+      
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td><img id="drag1" class="wt11" draggable="true" ondragstart="drag(event)" src="images/laptop.jpg" height="30px" width:"60px"></td>
+                  <td id="wt01"></td>
+                  <td id="pt01" style="text-align: center;background-color: whitesmoke;"></td>
+      
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><img id="drag2" class="wt12" draggable="true" ondragstart="drag(event)" src="images/jewelary.jpg" height="30px" width:"60px"></td>
+                  <td><input  name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt02"></td>
+                  <td><input " name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt02"></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><img id="drag3" class="wt13" draggable="true" ondragstart="drag(event)" src="images/mobile.jpg" height="30px" width:"60px"></td>
+                  <td><input name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt03"></td>
+                  <td><input  name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt03"></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><img  id="drag4" class="wt14" draggable="true" ondragstart="drag(event)" src="images/diamond.jpg" height="30px" width:"80px"></td>
+                  <td><input  name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt04"></td>
+                  <td><input name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt04"></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td><img  id="drag5" class="wt15" draggable="true" ondragstart="drag(event)" src="images/suitcase.jpg" height="30px" width:"60px"></td>
+                  <td><input name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt05"></td>
+                  <td><input  name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt05"></td>
+                </tr>
+      
+              </table>
+              
+              
+              <p style="color:red;">HINT : Apply the given formula and calculate the maximum profit.<br>
+                v[i,w]=max(v[i-1,w],v[i-1,w-w[i]]+p[i])<br>
+                i : rows<br>
+                w : columns<br>
+                w[i] : weight of i<sup>th</sup> item <br>
+                p[i] : profit of i<sup>th</sup> item <br>
+                v[5,10]=index value with maximum profit.</p><br><br><br><br>
+                <a onclick="b7();" class="myButton">Dynamic Programming</a>
+                <p style="font-size:20px;display:none;">Evaluation Table</p>
+              <table style="border-collapse:collapse; margin-top:10px;display: none;">
+              <tr>
+                <td colspan="13" style="text-align:center;">Knapsack Weight</td>
+              </tr>
+              <tr>
+                <td rowspan="8">Item</td>
+                <td></td>
+                <td>j=0</td>
+                <td>j=1</td>
+                <td>j=2</td>
+                <td>j=3</td>
+                <td>j=4</td>
+                <td>j=5</td>
+                <td>j=6</d>
+                <td>j=7</td>
+                <td>j=8</td>
+                <td>j=9</td>
+                <td>j=10</td>
+      
+              </tr>
+              <tr>
+                <td>i=0</td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+              </tr>
+      
+              <tr>
+                <td>i=1</td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+      
+              </tr>
+              <tr>
+                <td>i=2</td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+              </tr>
+              <tr>
+                <td>i=3</td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+              </tr>
+              <tr>
+                <td>i=4</td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+              </tr>
+              <tr>
+                <td>i=5</td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+              </tr>
+            </table>
+            
+              <p id="para2" style="display:none;">Enter the calculated profit :<input type="number" id="rs2">&nbsp<a onclick="fillbag1();" class="myButton" style="margin-bottom: 10px;">Check Result</a><a onclick="fillbag();" class="myButton" style="margin-bottom: 10px;display: none;">Next</a></p>
+            </div><!--End of 4th div for 1Dynamic scenario-->
+
+
+
+
+            <div id="div5" style="margin-top: 10px;display:none"><!--5th div for 2 greedy scenario-->
+                <div id="p5">
+                    <div class="rbox">
+                        <h4>Bag Capacity : 10 unit</h4>
+                        <h4>KNAPSACK</h4>
+                        <div id="bagbox" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-image:url(images/bag.jpeg)">
+                          <table id="transbox" style="float: right;">
+                                <tr>
+                                  <td><input type="text" id="bg1" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" id="bg2" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" id="bg3" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" id="bg4" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" id="bg5" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                </tr>
+                          </table>
+                        </div>
+                        <p>Result Table</p>
+                        <table id="ptable">
+                          <tr>
+                            <th colspan="4">Profit</th>
+                          </tr>
+                          <tr>
+                            <td>Process</td>
+                            <td>Scenario I</td>
+                            <td>Scenario II</td>
+                            <td>Scenario III</td>
+                          </tr>
+                          <tr>
+                            <td>Greedy</td>
+                            <td name="form1" action="dynamicsc1.html" method="get"><input type="text" style="width:70px;" id="st1"/></td>
+                            <td><input type="text" style="width:70px;" id="st2"/></td>
+                            <td><input type="text" style="width:70px;" id="st3"/></td>
+                          </tr>
+                          <tr>
+                            <td>Dynamic</td>
+                            <td><input type="text" style="width:70px;" id="dt1"/></td>
+                            <td><input type="text" style="width:70px;" id="dt2"/></td>
+                            <td><input type="text" style="width:70px;" id="dt3"/></td>
+                          </tr>
+                        </table>
+                    </div>
+                    <div class="main">
+                        <a  href="index.html" class="myButton">HOME</a>
+                        <!-- <a class="myButton">Thief Robbing a safe problem</a> -->
+                        <!-- <a onclick="sc1.html" class="myButton">Scenario I</a> -->
+                        <!-- <a onclick="sc2.html" class="myButton">Scenario II </a> -->
+                        <h3>Scenario I: The input values of weight  should be very less than value of profit.</h3>
+              
+              
+                        <table style="width:auto;">
+                                <tr>
+                                  <th>ITEM ID</th>
+                                  <th>ITEM</th>
+                                  <th>WEIGHT</th>
+                                  <th >PROFIT</th>
+                                  <th >(Profit/Weight) Ratio</th>
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td><img id="drag1" class="wt11" draggable="true" ondragstart="drag(event)" src="images/laptop.jpg" height="30px" width:"60px"></img></td>
+                                  <td>
+                                    <select id="wt1" class="wt11">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                  </select>
+                                  </td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                  <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159); margin:5px;" id="rt1"></td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td><img id="drag2" class="wt12" draggable="true" ondragstart="drag(event)" src="images/jewelary.jpg" height="30px" width:"60px"></img></td>
+                                  <td><select id="wt2" class="wt12">
+                                    <option value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt2"></td>
+                                  <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159);margin:5px;" id="rt2"></td>
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td><img id="drag3" class="wt13" draggable="true" ondragstart="drag(event)" src="images/mobile.jpg" height="30px" width:"60px"></img></td>
+                                  <td><select id="wt3" class="wt13">
+                                  <option value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt3"></td>
+                                  <td><input type="text" name="d1" style="width:60px;border:0px;background-color:rgb(89, 245, 159);margin:5px;" id="rt3"></td>
+                                </tr>
+                                <tr>
+                                  <td>4</td>
+                                  <td><img  id="drag4" class="wt14" draggable="true" ondragstart="drag(event)" src="images/diamond.jpg" height="30px" width:"80px"></img></td>
+                                  <td><select id="wt4" class="wt14">
+                                  <option value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt4"></td>
+                                  <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159);margin:5px;" id="rt4"></td>
+                                </tr>
+                                <tr>
+                                  <td>5</td>
+                                  <td><img  id="drag5" class="wt15" draggable="true" ondragstart="drag(event)" src="images/suitcase.jpg" height="30px" width:"60px"></img></td>
+                                  <td><select id="wt5" class="wt15">
+                                  <option value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt5"></td>
+                                  <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159);margin:5px;" id="rt5"></td>
+                                </tr>
+                              </table><br>
+              
+                              <p style="color:red;float:left;">HINT : Select the items based on (profit/weight) ratio according to the capacity of knapsack
+                                (higher ratio item select first then next higher and so on.) </p><br>
+                              <a onclick="algo1();" class="myButton">Greedy Algorithm</a><br><br>
+                              Enter the maximum profit :<input type="number" id="rs1">&nbsp<a onclick="result1();" class="myButton">Check Result</a>
+                              <a style="float:right;" href="dynamicsc1.html" class="myButton" id="next1">Next</a>
+                    </div>     
+                </div>
+              </div><!--End 5th div for 2 greedy scenario-->
+
+
+
+
+
+
+
+              <div id="div6" style="display:none"><!--6th div for 2Dynamic scenario-->
+                  <div id="div4">
+                      <div class="rbox">
+                          <h4>Bag Capacity : 10 unit</h4>
+                          <h4>KNAPSACK</h4>
+                          <div id="bagbox" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-image:url(images/bag.jpeg)">
+                            <table id="transbox" style="float: right;">
+                                  <tr>
+                                    <td><input type="text" id="bg1" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" id="bg2" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" id="bg3" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" id="bg4" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                  </tr>
+                                  <tr>
+                                    <td><input type="text" id="bg5" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                  </tr>
+                            </table>
+                          </div>
+                          <p>Result Table</p>
+                          <table id="ptable">
+                            <tr>
+                              <th colspan="4">Profit</th>
+                            </tr>
+                            <tr>
+                              <td>Process</td>
+                              <td>Scenario I</td>
+                              <td>Scenario II</td>
+                              <td>Scenario III</td>
+                            </tr>
+                            <tr>
+                              <td>Greedy</td>
+                              <td name="form1" action="dynamicsc1.html" method="get"><input type="text" style="width:70px;" id="st1"/></td>
+                              <td><input type="text" style="width:70px;" id="st2"/></td>
+                              <td><input type="text" style="width:70px;" id="st3"/></td>
+                            </tr>
+                            <tr>
+                              <td>Dynamic</td>
+                              <td><input type="text" style="width:70px;" id="dt1"/></td>
+                              <td><input type="text" style="width:70px;" id="dt2"/></td>
+                              <td><input type="text" style="width:70px;" id="dt3"/></td>
+                            </tr>
+                          </table>
+                      </div>
+                      <div class="main1">
+                          <a href="index.html" class="myButton">Home</a>
+                          <a href="sc2.html" class="myButton">Move to Scenario II </a>
+                          <h3>Scenario I: The input values of weight  should be very less than value of profit.</h3>
+                  
+                          <table style="width:auto" class="bag321" style="text-align:center;">
+                            <tr>
+                              <th>ITEM NO.</th>
+                              <th>ITEM IMG</th>
+                              <th>WEIGHT</th>
+                              <th >PROFIT</th>
+                  
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td><a href=""><img id="drag1" class="wt11" draggable="true" ondragstart="drag(event)" src="images/laptop.jpg" height="30px" width:"60px"></a></td>
+                              <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                              <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                  
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td><a href=""></a><img id="drag2" class="wt12" draggable="true" ondragstart="drag(event)" src="images/jewelary.jpg" height="30px" width:"60px"></td>
+                              <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt2"></td>
+                              <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt2"></td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td><a href=""><img id="drag3" class="wt13" draggable="true" ondragstart="drag(event)" src="images/mobile.jpg" height="30px" width:"60px"></a></td>
+                              <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt3"></td>
+                              <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt3"></td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td><a href=""><img  id="drag4" class="wt14" draggable="true" ondragstart="drag(event)" src="images/diamond.jpg" height="30px" width:"80px"></a></td>
+                              <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt4"></td>
+                              <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt4"></td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td><a href=""><img  id="drag5" class="wt15" draggable="true" ondragstart="drag(event)" src="images/suitcase.jpg" height="30px" width:"60px"></a></td>
+                              <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt5"></td>
+                              <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt5"></td>
+                            </tr>
+                  
+                          </table>
+                          
+                          <table style="border-collapse:collapse; margin-top:10px;">
+                          <tr>
+                            <td colspan="13" style="text-align:center;">Knapsack Weight</td>
+                          </tr>
+                          <tr>
+                            <td rowspan="8">Item</td>
+                            <td></td>
+                            <td>j=0</td>
+                            <td>j=1</td>
+                            <td>j=2</td>
+                            <td>j=3</td>
+                            <td>j=4</td>
+                            <td>j=5</td>
+                            <td>j=6</d>
+                            <td>j=7</td>
+                            <td>j=8</td>
+                            <td>j=9</td>
+                            <td>j=10</td>
+                  
+                          </tr>
+                          <tr>
+                            <td>i=0</td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                          </tr>
+                  
+                          <tr>
+                            <td>i=1</td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                  
+                          </tr>
+                          <tr>
+                            <td>i=2</td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                          </tr>
+                          <tr>
+                            <td>i=3</td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                          </tr>
+                          <tr>
+                            <td>i=4</td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                          </tr>
+                          <tr>
+                            <td>i=5</td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                            <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                          </tr>
+                        </table>
+                          <p style="color:red;">HINT : Apply the given formula and calculate the maximum profit.<br>
+                          v[i,w]=max(v[i-1,w],v[i-1,w-w[i]]+p[i])<br>
+                          i : rows<br>
+                          w : columns<br>
+                          w[i] : weight of i<sup>th</sup> item <br>
+                          p[i] : profit of i<sup>th</sup> item <br>
+                          v[5,10]=index value with maximum profit.</p>
+                  
+                          Enter the calculated profit :<input type="number" id="rs1">&nbsp<a onclick="fillbag();" class="myButton" style="margin-bottom: 10px;">Check Result</a>
+                        </div>
+              </div><!--End of 6th div for 2Dynamic scenario-->
+
+
+
+
+
+
+          <div id="div7" style="display: none;"><!--7th div for 3rd greedy scenario-->                
+            <div id="div5" style="margin-top: 10px;">
+                <div id="p5">
+                    <div class="rbox">
+                        <h4>Bag Capacity : 10 unit</h4>
+                        <h4>KNAPSACK</h4>
+                        <div id="bagbox" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-image:url(images/bag.jpeg)">
+                          <table id="transbox" style="float: right;">
+                                <tr>
+                                  <td><input type="text" id="bg1" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" id="bg2" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" id="bg3" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" id="bg4" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                </tr>
+                                <tr>
+                                  <td><input type="text" id="bg5" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                </tr>
+                          </table>
+                        </div>
+                        <p>Result Table</p>
+                        <table id="ptable">
+                          <tr>
+                            <th colspan="4">Profit</th>
+                          </tr>
+                          <tr>
+                            <td>Process</td>
+                            <td>Scenario I</td>
+                            <td>Scenario II</td>
+                            <td>Scenario III</td>
+                          </tr>
+                          <tr>
+                            <td>Greedy</td>
+                            <td name="form1" action="dynamicsc1.html" method="get"><input type="text" style="width:70px;" id="st1"/></td>
+                            <td><input type="text" style="width:70px;" id="st2"/></td>
+                            <td><input type="text" style="width:70px;" id="st3"/></td>
+                          </tr>
+                          <tr>
+                            <td>Dynamic</td>
+                            <td><input type="text" style="width:70px;" id="dt1"/></td>
+                            <td><input type="text" style="width:70px;" id="dt2"/></td>
+                            <td><input type="text" style="width:70px;" id="dt3"/></td>
+                          </tr>
+                        </table>
+                    </div>
+                    <div class="main">
+                        <a  href="index.html" class="myButton">HOME</a>
+                        <h3>Scenario I: The input values of weight  should be very less than value of profit.</h3>             
+                        <table style="width:auto;">
+                                <tr>
+                                  <th>ITEM ID</th>
+                                  <th>ITEM</th>
+                                  <th>WEIGHT</th>
+                                  <th >PROFIT</th>
+                                  <th >(Profit/Weight) Ratio</th>
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td><img id="drag1" class="wt11" draggable="true" ondragstart="drag(event)" src="images/laptop.jpg" height="30px" width:"60px"></img></td>
+                                  <td>
+                                    <select id="wt1" class="wt11">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                  </select>
+                                  </td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                  <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159); margin:5px;" id="rt1"></td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td><img id="drag2" class="wt12" draggable="true" ondragstart="drag(event)" src="images/jewelary.jpg" height="30px" width:"60px"></img></td>
+                                  <td><select id="wt2" class="wt12">
+                                    <option value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt2"></td>
+                                  <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159);margin:5px;" id="rt2"></td>
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td><img id="drag3" class="wt13" draggable="true" ondragstart="drag(event)" src="images/mobile.jpg" height="30px" width:"60px"></img></td>
+                                  <td><select id="wt3" class="wt13">
+                                  <option value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt3"></td>
+                                  <td><input type="text" name="d1" style="width:60px;border:0px;background-color:rgb(89, 245, 159);margin:5px;" id="rt3"></td>
+                                </tr>
+                                <tr>
+                                  <td>4</td>
+                                  <td><img  id="drag4" class="wt14" draggable="true" ondragstart="drag(event)" src="images/diamond.jpg" height="30px" width:"80px"></img></td>
+                                  <td><select id="wt4" class="wt14">
+                                  <option value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt4"></td>
+                                  <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159);margin:5px;" id="rt4"></td>
+                                </tr>
+                                <tr>
+                                  <td>5</td>
+                                  <td><img  id="drag5" class="wt15" draggable="true" ondragstart="drag(event)" src="images/suitcase.jpg" height="30px" width:"60px"></img></td>
+                                  <td><select id="wt5" class="wt15">
+                                  <option value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                </select></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt5"></td>
+                                  <td><input type="text" name="d1" style="width:60px;border:0px;background-color: rgb(89, 245, 159);margin:5px;" id="rt5"></td>
+                                </tr>
+                              </table><br>
+              
+                              <p style="color:red;float:left;">HINT : Select the items based on (profit/weight) ratio according to the capacity of knapsack
+                                (higher ratio item select first then next higher and so on.) </p><br>
+                              <a onclick="algo1();" class="myButton">Greedy Algorithm</a><br><br>
+                              Enter the maximum profit :<input type="number" id="rs1">&nbsp<a onclick="result1();" class="myButton">Check Result</a>
+                              <a style="float:right;" href="dynamicsc1.html" class="myButton" id="next1">Next</a>
+                    </div>     
+                </div>
+              </div>
+              </div><!--End 7th div for 3rd greedy scenario-->
+
+
+
+
+
+              <div id="div8" style="display: none;"><!--8th div for 3rd Dynamic scenario-->
+                  <div id="div6">
+                      <div id="div4">
+                          <div class="rbox">
+                              <h4>Bag Capacity : 10 unit</h4>
+                              <h4>KNAPSACK</h4>
+                              <div id="bagbox" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-image:url(images/bag.jpeg)">
+                                <table id="transbox" style="float: right;">
+                                      <tr>
+                                        <td><input type="text" id="bg1" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td><input type="text" id="bg2" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td><input type="text" id="bg3" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td><input type="text" id="bg4" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td><input type="text" id="bg5" style="width:25px;background-color:rgb(237,228,169);"/></td>
+                                      </tr>
+                                </table>
+                              </div>
+                              <p>Result Table</p>
+                              <table id="ptable">
+                                <tr>
+                                  <th colspan="4">Profit</th>
+                                </tr>
+                                <tr>
+                                  <td>Process</td>
+                                  <td>Scenario I</td>
+                                  <td>Scenario II</td>
+                                  <td>Scenario III</td>
+                                </tr>
+                                <tr>
+                                  <td>Greedy</td>
+                                  <td name="form1" action="dynamicsc1.html" method="get"><input type="text" style="width:70px;" id="st1"/></td>
+                                  <td><input type="text" style="width:70px;" id="st2"/></td>
+                                  <td><input type="text" style="width:70px;" id="st3"/></td>
+                                </tr>
+                                <tr>
+                                  <td>Dynamic</td>
+                                  <td><input type="text" style="width:70px;" id="dt1"/></td>
+                                  <td><input type="text" style="width:70px;" id="dt2"/></td>
+                                  <td><input type="text" style="width:70px;" id="dt3"/></td>
+                                </tr>
+                              </table>
+                          </div>
+                          <div class="main1">
+                              <a href="index.html" class="myButton">Home</a>
+                              <!-- <a class="myButton">Thief Robbing a safe Problem </a> -->
+                              <!-- <a class="myButton">Scenario I</a> -->
+                              <a href="sc2.html" class="myButton">Move to Scenario II </a>
+                              <!-- <a class="myButton">Scenario III </a> -->
+                              <h3>Scenario I: The input values of weight  should be very less than value of profit.</h3>
+                      
+                              <table style="width:auto" class="bag321" style="text-align:center;">
+                                <tr>
+                                  <th>ITEM NO.</th>
+                                  <th>ITEM IMG</th>
+                                  <th>WEIGHT</th>
+                                  <th >PROFIT</th>
+                      
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td><a href=""><img id="drag1" class="wt11" draggable="true" ondragstart="drag(event)" src="images/laptop.jpg" height="30px" width:"60px"></a></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                      
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td><a href=""></a><img id="drag2" class="wt12" draggable="true" ondragstart="drag(event)" src="images/jewelary.jpg" height="30px" width:"60px"></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt2"></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt2"></td>
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td><a href=""><img id="drag3" class="wt13" draggable="true" ondragstart="drag(event)" src="images/mobile.jpg" height="30px" width:"60px"></a></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt3"></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt3"></td>
+                                </tr>
+                                <tr>
+                                  <td>4</td>
+                                  <td><a href=""><img  id="drag4" class="wt14" draggable="true" ondragstart="drag(event)" src="images/diamond.jpg" height="30px" width:"80px"></a></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt4"></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt4"></td>
+                                </tr>
+                                <tr>
+                                  <td>5</td>
+                                  <td><a href=""><img  id="drag5" class="wt15" draggable="true" ondragstart="drag(event)" src="images/suitcase.jpg" height="30px" width:"60px"></a></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="wt5"></td>
+                                  <td><input type="number" name="d1" style="width:60px;margin:5px;background-color: whitesmoke;" id="pt5"></td>
+                                </tr>
+                      
+                              </table>
+                              
+                              <table style="border-collapse:collapse; margin-top:10px;">
+                              <tr>
+                                <td colspan="13" style="text-align:center;">Knapsack Weight</td>
+                              </tr>
+                              <tr>
+                                <td rowspan="8">Item</td>
+                                <td></td>
+                                <td>j=0</td>
+                                <td>j=1</td>
+                                <td>j=2</td>
+                                <td>j=3</td>
+                                <td>j=4</td>
+                                <td>j=5</td>
+                                <td>j=6</d>
+                                <td>j=7</td>
+                                <td>j=8</td>
+                                <td>j=9</td>
+                                <td>j=10</td>
+                      
+                              </tr>
+                              <tr>
+                                <td>i=0</td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                              </tr>
+                      
+                              <tr>
+                                <td>i=1</td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                      
+                              </tr>
+                              <tr>
+                                <td>i=2</td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                              </tr>
+                              <tr>
+                                <td>i=3</td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                              </tr>
+                              <tr>
+                                <td>i=4</td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                              </tr>
+                              <tr>
+                                <td>i=5</td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="wt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                                <td><input type="number" name="d1" style="width:30px;margin:5px;background-color: whitesmoke;" id="pt1"></td>
+                              </tr>
+                            </table>
+                              <p style="color:red;">HINT : Apply the given formula and calculate the maximum profit.<br>
+                              v[i,w]=max(v[i-1,w],v[i-1,w-w[i]]+p[i])<br>
+                              i : rows<br>
+                              w : columns<br>
+                              w[i] : weight of i<sup>th</sup> item <br>
+                              p[i] : profit of i<sup>th</sup> item <br>
+                              v[5,10]=index value with maximum profit.</p>
+                      
+                              Enter the calculated profit :<input type="number" id="rs1">&nbsp<a onclick="fillbag();" class="myButton" style="margin-bottom: 10px;">Check Result</a>
+                            </div>
+                  </div>
+              </div><!--End 8th div for 3rd Dynamic scenario-->
+
+      </div>
+    </body>
+</html>
